@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TelaLogin from './src/pages/TelaLogin';
 import TelaNovoUsuario from './src/pages/TelaNovoUsuario';
 import TelaNovoEstabelecimento from './src/pages/TelaNovoEstabelecimento';
+import TelaIndexCliente from './src/pages/TelaIndexCliente';
 import { RootStackParamList } from './src/telas';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -19,6 +20,9 @@ const App: React.FC = () => {
           options={{headerShown: false }} 
         />
         <Stack.Screen name="TelaNovoEstabelecimento" component={TelaNovoEstabelecimento} 
+          options={{headerShown: false }} 
+        />
+        <Stack.Screen name="TelaIndexCliente" component={TelaIndexCliente} 
           options={{headerShown: false }} 
         />
       </Stack.Navigator>

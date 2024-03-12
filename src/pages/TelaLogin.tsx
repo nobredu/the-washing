@@ -19,11 +19,8 @@ const TelaLogin: React.FC<HomeScreenProps> = ({ navigation }) => {
         <TextInput placeholder="Email" style={stylesLogin.imput}></TextInput>
         <TextInput placeholder="Senha" style={stylesLogin.imput}></TextInput>
         <TouchableOpacity style={stylesLogin.submit} 
-          onPress={() => { navigation.navigate('TelaNovoUsuario'); }}>
-          <Text 
-            style={stylesLogin.textSubmit}
-            onPress={() => { alert('Desabilitado no momento') }}
-            >Entrar</Text>
+          onPress={() => { navigation.navigate('TelaIndexCliente'); }}>
+          <Text style={stylesLogin.textSubmit}>Entrar</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={stylesLogin.novoUsuario} 
