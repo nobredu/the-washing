@@ -23,14 +23,6 @@ const Quadro: React.FC<QuadroProps> = ({ onPress, children }) => (
   </TouchableOpacity>
 );
 
-const Footer: React.FC = () => (
-  <View style={styles.footer}>
-    <Text>Home</Text>
-    <Text>Mensagens</Text>
-    <Text>Perfil</Text>
-  </View>
-);
-
 const TelaIndexCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -67,7 +59,11 @@ const TelaIndexCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
         </View>
       </View>
 
-      <Footer />
+      <View style={styles.footer}>
+        <Text >Home</Text>
+        <Text onPress={() => { navigation.navigate('TelaMensagensCliente'); }} >Mensagens</Text>
+        <Text onPress={() => { navigation.navigate('TelaPerfilCliente'); }} >Perfil</Text>
+      </View>
     </View>
   );
 };

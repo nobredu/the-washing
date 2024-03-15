@@ -3,4 +3,7 @@ export type RootStackParamList = {
     TelaNovoUsuario: undefined;
     TelaNovoEstabelecimento: undefined;
     TelaIndexCliente: undefined;
+    TelaMensagensCliente: undefined;
+    TelaPerfilCliente: undefined;
+    TelaPerfilEstabelecimento: undefined;
 };
