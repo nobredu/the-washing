@@ -5,6 +5,9 @@ export type RootStackParamList = {
     TelaIndexCliente: undefined;
     TelaMensagensCliente: undefined;
     TelaPerfilCliente: undefined;
-    TelaPerfilEstabelecimento: undefined;
     TelaUsuarioCadastradoCliente: undefined;
+    TelaIndexEstabelecimento: undefined;
+    TelaMensagensEstabelecimento: undefined;
+    TelaPerfilEstabelecimento: undefined;
+    TelaUsuarioCadastradoEstabelecimento: undefined,
 };

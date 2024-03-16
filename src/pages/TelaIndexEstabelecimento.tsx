@@ -23,7 +23,7 @@ const Quadro: React.FC<QuadroProps> = ({ onPress, children }) => (
   </TouchableOpacity>
 );
 
-const TelaIndexCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
+const TelaIndexEstabelecimento: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
@@ -31,45 +31,41 @@ const TelaIndexCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
         <Text style={styles.headerText} onPress={() => { navigation.navigate('TelaLogin'); }}>&lt;</Text>
       </View>
       
-      <Text style={styles.titleBody}>Cliente</Text>
+      <Text style={styles.titleBody}>Estabelecimento</Text>
 
       <View style={styles.body}>
         <View style={styles.gridContainer}>
           <Quadro 
             onPress={() => alert('Indisponivel no momento')}>
-            <Text>Agendar serviço</Text>
+            <Text>Serviços agendados</Text>
             
           </Quadro>
           <Quadro 
             onPress={() => alert('Indisponivel no momento')}>
-            <Text>Consultar serviço</Text>
+            <Text>Negociação</Text>
           </Quadro>
           <Quadro 
             onPress={() => alert('Indisponivel no momento')}>
-            <Text>Estabelecimentos proximos</Text>
+            <Text>Tipos de Serviços</Text>
           </Quadro>
           <Quadro 
             onPress={() => alert('Indisponivel no momento')}>
             <Image style={styles.icons} source={iconHistorico}></Image>
             <Text>Historico</Text>
           </Quadro>
-          <Quadro 
-            onPress={() => alert('Indisponivel no momento')}>
-            <Text>Negociação</Text>
-          </Quadro>
         </View>
       </View>
 
       <View style={styles.footer}>
-        <Text >Home</Text>
-        <Text onPress={() => { navigation.navigate('TelaMensagensCliente'); }} >Mensagens</Text>
-        <Text onPress={() => { navigation.navigate('TelaPerfilCliente'); }} >Perfil</Text>
+        <Text>Home</Text>
+        <Text onPress={() => { navigation.navigate('TelaMensagensEstabelecimento'); }}>Mensagens</Text>
+        <Text onPress={() => { navigation.navigate('TelaPerfilEstabelecimento');    }}>Perfil</Text>
       </View>
     </View>
   );
 };
 
-export default TelaIndexCliente;
+export default TelaIndexEstabelecimento;
 
 const styles = StyleSheet.create({
   container: {

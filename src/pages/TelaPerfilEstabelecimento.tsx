@@ -1,95 +1,111 @@
-// SegundaTela.tsx
-
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import React, { ReactNode, useState } from 'react';
+import { StyleSheet ,Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { RootStackParamList } from '../telas';
+import { StackNavigationProp } from '@react-navigation/stack';
+import iconPerfil from '../../assets/icons/iconPerfil.png'
+import iconPerfilEdit from '../../assets/icons/iconEditPerfil.png'
+import iconAvaliacao from '../../assets/icons/iconStars.png'
 
-type TelaNovoUsuarioProps = {
-  navigation: StackNavigationProp<RootStackParamList, 'TelaNovoUsuario'>;
+type HomeScreenProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'TelaIndexCliente'>;
 };
 
-const TelaNovoUsuario: React.FC<TelaNovoUsuarioProps> = ({ navigation }) => {
+const TelaPerfilCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
+  const [editando, setEditando] = useState(false); // Estado para controlar se está editando
+  function habilitaEdit() {
+    setEditando(!editando);
+
+  }
   return (
-    <View style={styles.container}>      
-      <View style={stylesNovoUsuario.container}>
-        <Text style={stylesNovoUsuario.titulo}>Novo Usuario</Text>
-        <TextInput placeholder="Nome Completo" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Cpf / CNPJ" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="RG" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Estado" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Cidade" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Endereço" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Celular" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Email" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Confirmar email" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Senha" style={stylesNovoUsuario.imput}></TextInput>
-        <TextInput placeholder="Confirmar senha" style={stylesNovoUsuario.imput}></TextInput>
-
-        <View style={stylesNovoUsuario.buttonContainer}>
-          <TouchableOpacity style={stylesNovoUsuario.buttonFooter}>
-            <Text 
-              style={stylesNovoUsuario.buttonFooterText}
-              onPress={() => { navigation.navigate('TelaLogin'); }}
-            >Cliente</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesNovoUsuario.buttonFooter}
-            onPress={() => { navigation.navigate('TelaNovoEstabelecimento'); }}>
-            <Text style={stylesNovoUsuario.buttonFooterText}>Estabelecimento</Text>
-          </TouchableOpacity>
-        </View>
-
+    <View style={styles.container}>
+      
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Perfil</Text>
+        <Image 
+          style={styles.iconPerfil} 
+          source={editando ? iconPerfilEdit : iconPerfil} // Alterna entre as imagens com base no estado de edição
+        />
+        {editando ? <Image style={styles.iconPerfilEdit} source={iconAvaliacao} /> : null}
       </View>
+
+      <View style={styles.camposPerfil}>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Empresa"><Text></Text></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Email"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Endereço"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Horario"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Dias"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Equipes"></TextInput>
+      </View>
+
+      <View style={styles.viewSubmit}>
+          <TouchableOpacity style={styles.submit} 
+            onPress={() => { 
+              habilitaEdit();
+            }}>
+            <Text style={styles.titulosCampos}>{editando ? 'Salvar' : 'Editar'}</Text>
+          </TouchableOpacity>
+      </View>
+
+      <View style={styles.footer}>
+        <Text onPress={() => { navigation.navigate('TelaIndexEstabelecimento'); }}>Home</Text>
+        <Text onPress={() => { navigation.navigate('TelaMensagensEstabelecimento'); }}>Mensagens</Text>        
+        <Text>Perfil</Text>
+      </View>
+      
     </View>
   );
 };
 
-export default TelaNovoUsuario;
+export default TelaPerfilCliente;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C4C4C4',
+    backgroundColor: '#C4C4C4',    
+  },
+  header:{
+    flex: 1,
+    marginTop: '20%',
+    marginBottom: '10%',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-});
-
-const stylesNovoUsuario = StyleSheet.create({
-  titulo: {
-    fontSize: 24, 
-    margin: 20
+  headerText: {    
+    fontSize: 35,
   },
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#DCD6D6',
-    width: '90%',
-    height: '95%',
-    borderRadius: 8,
+  iconPerfil: {
+    maxHeight: '100%',
+    maxWidth: '30%',
   },
-  imput: {
-    backgroundColor: '#716E6E',
-    borderRadius: 20,
-    width: '95%',
-    height: '6%',
-    marginTop: '2%',
-    textAlign: 'center'
+  iconPerfilEdit: {
+    maxHeight: '80%',
+    maxWidth: '30%',
   },
-  buttonContainer: {
+  camposPerfil:{
     marginTop: '10%',
-    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
-  buttonFooter: {
+  titulosCampos: {
+    marginLeft: '20%',
+    margin: 10,
+  },
+  viewSubmit:{
+    alignItems: 'center',
+    marginTop: '5%',
+  },
+  submit: {
     backgroundColor: '#04A330',
-    padding: 10,
     borderRadius: 5,
-    margin: 5,
-    width: '40%',
+    width: '30%',
+    height: '22%',
+    marginTop: '5%',
     borderWidth: 1,
     borderColor: 'black',
   },
-  buttonFooterText: {
-    color: 'black',
-    textAlign: 'center',
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%',
+    height:'5%',
   },
 });
