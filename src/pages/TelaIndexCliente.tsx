@@ -49,7 +49,7 @@ const TelaIndexCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
             <Text>Estabelecimentos proximos</Text>
           </Quadro>
           <Quadro 
-            onPress={() => alert('Indisponivel no momento')}>
+            onPress={() => navigation.navigate('TelaHistorico')}>
             <Image style={styles.icons} source={iconHistorico}></Image>
             <Text>Historico</Text>
           </Quadro>

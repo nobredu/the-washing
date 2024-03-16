@@ -13,6 +13,7 @@ import TelaIndexEstabelecimento from './src/pages/TelaIndexEstabelecimento';
 import TelaMensagensEstabelecimento from './src/pages/TelaMensagensEstabelecimento';
 import TelaPerfilEstabelecimento from './src/pages/TelaPerfilEstabelecimento';
 import TelaUsuarioCadastradoEstabelecimento from './src/pages/TelaUsuarioCadastradoEstabelecimento';
+import TelaHistorico from './src/pages/TelaHistorico';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -52,6 +53,9 @@ const App: React.FC = () => {
           options={{headerShown: false }} 
         />
         <Stack.Screen name="TelaUsuarioCadastradoEstabelecimento" component={TelaUsuarioCadastradoEstabelecimento} 
+          options={{headerShown: false }} 
+        />
+        <Stack.Screen name="TelaHistorico" component={TelaHistorico} 
           options={{headerShown: false }} 
         />
       </Stack.Navigator>
