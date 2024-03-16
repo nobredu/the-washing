@@ -10,7 +10,7 @@ type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'TelaIndexCliente'>;
 };
 
-const TelaMensagensCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
+const TelaHistoricoCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       
@@ -76,14 +76,14 @@ const TelaMensagensCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
 
       <View style={styles.footer}>
         <Text onPress={() => { navigation.navigate('TelaIndexCliente'); }}>Home</Text>
-        <Text>Mensagens</Text>
+        <Text onPress={() => { navigation.navigate('TelaMensagensCliente'); }}>Mensagens</Text>
         <Text onPress={() => { navigation.navigate('TelaPerfilCliente'); }}>Perfil</Text>
       </View>
     </View>
   );
 };
 
-export default TelaMensagensCliente;
+export default TelaHistoricoCliente;
 
 const styles = StyleSheet.create({
   container: {

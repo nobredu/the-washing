@@ -49,7 +49,7 @@ const TelaIndexEstabelecimento: React.FC<HomeScreenProps> = ({ navigation }) => 
             <Text>Tipos de Serviços</Text>
           </Quadro>
           <Quadro 
-            onPress={() => navigation.navigate('TelaHistorico')}>
+            onPress={() => navigation.navigate('TelaHistoricoEstabelecimento')}>
             <Image style={styles.icons} source={iconHistorico}></Image>
             <Text>Historico</Text>
           </Quadro>
