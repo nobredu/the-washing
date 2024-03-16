@@ -22,7 +22,7 @@ const TelaPerfilCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
         <Text style={styles.headerText}>Perfil</Text>
         <Image 
           style={styles.iconPerfil} 
-          source={editando ? iconPerfil : iconPerfilEdit} // Alterna entre as imagens com base no estado de edição
+          source={editando ? iconPerfilEdit : iconPerfil} // Alterna entre as imagens com base no estado de edição
         />
       </View>
 
