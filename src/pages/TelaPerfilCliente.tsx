@@ -1,42 +1,54 @@
-import React, { ReactNode } from 'react';
-import { StyleSheet ,Text, View, TouchableOpacity, Image } from 'react-native';
+import React, { ReactNode, useState } from 'react';
+import { StyleSheet ,Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { RootStackParamList } from '../telas';
 import { StackNavigationProp } from '@react-navigation/stack';
 import iconPerfil from '../../assets/icons/iconPerfil.png'
+import iconPerfilEdit from '../../assets/icons/iconEditPerfil.png'
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'TelaIndexCliente'>;
 };
 
 const TelaPerfilCliente: React.FC<HomeScreenProps> = ({ navigation }) => {
+  const [editando, setEditando] = useState(false); // Estado para controlar se está editando
+  function habilitaEdit() {
+    setEditando(!editando);
+
+  }
   return (
     <View style={styles.container}>
-
-      <View style={styles.header}>
-        {/* <Text style={styles.headerText} onPress={() => { navigation.navigate('TelaLogin'); }}>&lt;</Text> */}
-      </View>
       
-      <Text style={styles.titleBody}>Perfil</Text>
-      <Image style={styles.iconPerfil} source={iconPerfil}></Image>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Perfil</Text>
+        <Image 
+          style={styles.iconPerfil} 
+          source={editando ? iconPerfil : iconPerfilEdit} // Alterna entre as imagens com base no estado de edição
+        />
+      </View>
 
-      <View style={styles.body}>
-          <Text style={styles.titulosCampos}>Nome</Text>
-          <Text style={styles.titulosCampos}>Email</Text>
-          <Text style={styles.titulosCampos}>Veiculo</Text>
-          <Text style={styles.titulosCampos}>Placa</Text>
-          <Text style={styles.titulosCampos}>Celular</Text>
+      <View style={styles.camposPerfil}>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Nome"><Text></Text></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Email"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Veiculo"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Placa"></TextInput>
+          <TextInput editable={editando} style={styles.titulosCampos} placeholder = "Celular"></TextInput>
+      </View>
 
+      <View style={styles.viewSubmit}>
           <TouchableOpacity style={styles.submit} 
-            onPress={() => { alert("Indisponivel no momento") }}>
-            <Text style={styles.titulosCampos}>Editar</Text>
+            onPress={() => { 
+              habilitaEdit();
+            }}>
+            <Text style={styles.titulosCampos}>{editando ? 'Salvar' : 'Editar'}</Text>
           </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
         <Text onPress={() => { navigation.navigate('TelaIndexCliente'); }}>Home</Text>
-        <Text onPress={() => { navigation.navigate('TelaMensagensCliente'); }}>Mensagens</Text>
+        <Text onPress={() => { navigation.navigate('TelaMensagensCliente'); }}>Mensagens</Text>        
         <Text>Perfil</Text>
       </View>
+      
     </View>
   );
 };
@@ -46,29 +58,42 @@ export default TelaPerfilCliente;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C4C4C4',
-    alignItems: 'center',
+    backgroundColor: '#C4C4C4',    
   },
-  header: {
-    height: 70,
-    padding: 10,
-    marginLeft: 10,
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerText: {
-    color: 'blue',
-    fontSize: 18,
-    flex: 1,
-  },
-  titleBody: {
-    textAlign: 'center',
-    fontSize: 35,
-  },
-  body:{
+  header:{
     flex: 1,
     marginTop: '20%',
+    alignItems: 'center',
+  },
+  headerText: {    
+    fontSize: 35,
+  },
+  iconPerfil: {
+    maxHeight: '70%',
+    maxWidth: '40%',
+    borderRadius: 10,
+    margin: 20
+  },
+  camposPerfil:{
+    marginTop: '10%',
+    alignItems: 'flex-start',
+  },
+  titulosCampos: {
+    marginLeft: '20%',
+    margin: 10,
+  },
+  viewSubmit:{
+    alignItems: 'center',
+    marginTop: '5%',
+  },
+  submit: {
+    backgroundColor: '#04A330',
+    borderRadius: 5,
+    width: '30%',
+    height: '22%',
+    marginTop: '5%',
+    borderWidth: 1,
+    borderColor: 'black',
   },
   footer: {
     flexDirection: 'row',
@@ -76,23 +101,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height:'5%',
-  },
-  iconPerfil: {
-    maxHeight: '25%',
-    maxWidth: '50%',
-    borderRadius: 10,
-    margin: 20
-  },
-  titulosCampos: {
-    margin: 10,
-  },
-  submit: {
-    backgroundColor: '#04A330',
-    borderRadius: 5,
-    width: '30%',
-    height: '13%',
-    marginTop: '5%',
-    borderWidth: 1,
-    borderColor: 'black',
   },
 });
