@@ -9,6 +9,7 @@ import TelaMensagensCliente from './src/pages/TelaMensagensCliente';
 import { RootStackParamList } from './src/telas';
 import TelaPerfilCliente from './src/pages/TelaPerfilCliente';
 import TelaPerfilEstabelecimento from './src/pages/TelaPerfilEstabelecimento';
+import TelaUsuarioCadastradoCliente from './src/pages/TelaUsuarioCadastradoCliente';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -35,6 +36,9 @@ const App: React.FC = () => {
           options={{headerShown: false }} 
         />
         <Stack.Screen name="TelaPerfilEstabelecimento" component={TelaPerfilEstabelecimento} 
+          options={{headerShown: false }} 
+        />
+        <Stack.Screen name="TelaUsuarioCadastradoCliente" component={TelaUsuarioCadastradoCliente} 
           options={{headerShown: false }} 
         />
       </Stack.Navigator>

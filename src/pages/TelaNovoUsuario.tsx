@@ -30,7 +30,7 @@ const TelaNovoUsuario: React.FC<TelaNovoUsuarioProps> = ({ navigation }) => {
           <TouchableOpacity style={stylesNovoUsuario.buttonFooter}>
             <Text 
               style={stylesNovoUsuario.buttonFooterText}
-              onPress={() => { navigation.navigate('TelaLogin'); }}
+              onPress={() => { navigation.navigate('TelaUsuarioCadastradoCliente'); }}
             >Cliente</Text>
           </TouchableOpacity>
           <TouchableOpacity style={stylesNovoUsuario.buttonFooter}
